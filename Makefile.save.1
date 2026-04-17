@@ -1,0 +1,31 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+LIBS = -lcrypto
+
+# ─── Main binary ─────────────────────────────────────────────────────
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+LIBS = -lcrypto
+
+all: pes
+
+pes: main.o object.o tree.o index.o
+	$(CC) $(CFLAGS) -o pes main.o object.o tree.o index.o $(LIBS)
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
+
+object.o: object.c
+	$(CC) $(CFLAGS) -c object.c
+
+tree.o: tree.c
+	$(CC) $(CFLAGS) -c tree.c
+
+index.o: index.c
+	$(CC) $(CFLAGS) -c index.c
+
+test_tree: test_tree.o object.o tree.o index.o
+	$(CC) -o test_tree test_tree.o object.o tree.o index.o $(LIBS)
+
+clean:
+	rm -f *.o pes test_tree
