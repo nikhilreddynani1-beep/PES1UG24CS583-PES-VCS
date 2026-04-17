@@ -15,8 +15,12 @@
 #include <string.h>
 #include <dirent.h>
 #include <sys/stat.h>
+
 int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out);
 int object_read(const ObjectID *id, ObjectType *type_out, void **data_out, size_t *len_out);    
+
+
+
 // ─── Mode Constants ─────────────────────────────────────────────────────────
 
 #define MODE_FILE      0100644
@@ -130,6 +134,7 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 //   - object_write    : save that binary buffer to the store as OBJ_TREE
 //
 // Returns 0 on success, -1 on error.
+
 #include "index.h"
 
 // Recursive helper to build trees level by level
@@ -200,3 +205,11 @@ int tree_from_index(ObjectID *id_out) {
     // Start building from the root (depth 0)
     return build_tree_recursive(index.entries, index.count, 0, id_out);
 }
+
+int tree_from_index(ObjectID *id_out) {
+    // TODO: Implement recursive tree building
+    // (See Lab Appendix for logical steps)
+    (void)id_out;
+    return -1;
+}
+
