@@ -1,4 +1,4 @@
-// commit.c — Commit creation and history traversal  
+// commit.c — Commit creation and history traversal   
  
 #include "commit.h"
 #include "index.h"
